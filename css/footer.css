@@ -34,7 +34,7 @@ body{
     gap: 3vh;
 }
 .intro{
-    width: 25vw;
+    width: 24vw;
 
 }
 
@@ -60,6 +60,9 @@ body{
     align-items: center; 
     gap: 5%;            
     line-height: 1.1;
+}
+.footer_links a:hover{
+    border-bottom: 1px solid #ffffff;
 }
 
 .footer > a{
