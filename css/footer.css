@@ -42,7 +42,7 @@ body{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 16%;
+    gap: 18%;
     padding: 0 10%;
     border-bottom: 1px solid #ffffff;
     margin-bottom: 15px;
@@ -51,6 +51,7 @@ body{
 .footer_info{
     width: 22%;
     gap: 25px; 
+    padding-left: 20px;
 }
 .footer_info span{
     padding-left: 0;
