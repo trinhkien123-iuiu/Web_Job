@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sản phẩm</title>
+    <link rel="stylesheet" href="../css/product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+
+<body>
+
+    <div id="site-header" data-include="../html/header.html"></div>
+    <script src="../js/header.js"></script> 
+
+    <div class="breadcrumb">
+        <p>Trang chủ / <span style="color: var(--main-text-click)">Sản phẩm</span> </p>
+    </div>
+    
+    <div class="product-container">
+        <!-- Sidebar filter -->
+        <div class="filter-sidebar">
+            <h2>Danh mục sản phẩm</h2>
+            
+            <!-- Phòng Khách -->
+            <div class="category-group">
+                <label class="category-label">
+                    <input type="radio" name="main-category" value="phong-khach" class="main-category-radio">
+                    <span>Phòng khách</span>
+                </label>
+                <div class="subcategory-group">
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="sofa" class="sub-category-radio" data-parent="phong-khach">
+                        <span>Sofa</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="arm" class="sub-category-radio" data-parent="phong-khach">
+                        <span>Arm</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="ban-tra" class="sub-category-radio" data-parent="phong-khach">
+                        <span>Bàn trà</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="ke-tv" class="sub-category-radio" data-parent="phong-khach">
+                        <span>Kệ TV</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="tu-giay" class="sub-category-radio" data-parent="phong-khach">
+                        <span>Tủ giày</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Phòng Ăn -->
+            <div class="category-group">
+                <label class="category-label">
+                    <input type="radio" name="main-category" value="phong-an" class="main-category-radio">
+                    <span>Phòng ăn</span>
+                </label>
+                <div class="subcategory-group">
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="ban-an" class="sub-category-radio" data-parent="phong-an">
+                        <span>Bàn ăn</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="ghe-an" class="sub-category-radio" data-parent="phong-an">
+                        <span>Ghế ăn</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="tu-bep" class="sub-category-radio" data-parent="phong-an">
+                        <span>Tủ bếp</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Phòng Ngủ -->
+            <div class="category-group">
+                <label class="category-label">
+                    <input type="radio" name="main-category" value="phong-ngu" class="main-category-radio" checked>
+                    <span>Phòng ngủ</span>
+                </label>
+                <div class="subcategory-group">
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="giuong" class="sub-category-radio" data-parent="phong-ngu" checked>
+                        <span>Giường</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="tap-dau-giuong" class="sub-category-radio" data-parent="phong-ngu">
+                        <span>Tap đầu giường</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="don-cuoi-giuong" class="sub-category-radio" data-parent="phong-ngu">
+                        <span>Đôn cuối giường</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="ban-trang-diem" class="sub-category-radio" data-parent="phong-ngu">
+                        <span>Bàn trang điểm</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="don-ngoi-trang-diem" class="sub-category-radio" data-parent="phong-ngu">
+                        <span>Đôn ngồi trang điểm</span>
+                    </label>
+                    <label class="subcategory-label">
+                        <input type="radio" name="sub-category" value="tu-quan-ao" class="sub-category-radio" data-parent="phong-ngu">
+                        <span>Tủ quần áo</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content area -->
+        <div class="result-area">
+            <p class="result-count">Hiển thị <span id="result-count">24</span> kết quả</p>
+            <div class="product-list" id="product-list">
+                <!-- Products will be dynamically generated -->
+            </div>
+        </div>
+    </div>
+
+     <div id="site-footer" data-include="../html/footer.html"></div>
+    <script src="../js/footer.js"></script>
+    <script src="../js/product.js"></script>
+</body>
+
+</html>
