@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="/css/footer.css">
 </head>
 <body>
+    <!-- Header -->
     <div id="site-header" data-include="../html/header.html"></div>
     <script src="../js/header.js"></script>
-
+    
+    <!-- Slider -->
     <div id="slider">
         <span><a href="">Trang chủ</a><p style="padding: 0 5px;">/</p><a href="">Bộ sưu tập</a></span>
         <div class="slider_text">
@@ -26,8 +28,36 @@
         </div>
     </div>
 
+    <section id="sub_slider" aria-label="Dự án nổi bật">
+        <div class="img_slider" data-fade-slider>
+            <img src="/pics/sofa1.jpg" alt="Pic 1" class="is-active">
+            <img src="/pics/sofa1.jpg" alt="Pic 2">
+            <img src="/pics/sofa1.jpg" alt="Pic 3">
+
+            <button class="slider_btn prev" type="button" aria-label="Previous">
+                <i class="fa-solid fa-angle-left"></i>
+            </button>
+
+            <button class="slider_btn next" type="button" aria-label="Next">
+                <i class="fa-solid fa-angle-right"></i>
+            </button>
+
+            <div class="slider_dots" aria-label="Slider dots"></div>
+        </div>
+
+        <div class="text_slide">
+            <h3>Căn hộ Indochine tại Hạ Long</h3>
+            <p>Combo phòng khách, phòng ngủ</p>
+            <p> 
+                Dự án tại Hạ Long là hành trình tìm về những giá trị hoài cổ qua ngôn ngữ thiết kế Indochine đặc trưng.
+                An Bảo Home đã khéo léo kết hợp giữa khung gỗ tự nhiên sơn đen sang trọng và các chi tiết mây đan thủ công,
+                tạo nên một không gian nghỉ ngơi ấm cúng nhưng không kém phần quý phái.
+            </p>
+        </div>
+    </section>
 
 
+    <!-- Footer -->
     <div id="site-footer" data-include="../html/footer.html"></div>
     <script src="../js/footer.js"></script>
 </body>
