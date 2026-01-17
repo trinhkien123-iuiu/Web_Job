@@ -30,6 +30,6 @@ document.querySelectorAll("[data-slider]").forEach((s) => {
 
   go(0);
 
-  // auto chạy nếu muốn:
-  // setInterval(() => go(i + 1), 5000);
+//   auto chạy nếu muốn:
+//   setInterval(() => go(i + 1), 5000);
 });

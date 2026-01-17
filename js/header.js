@@ -7,3 +7,4 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(html => (header.innerHTML = html))
     .catch(console.error);
 });
+

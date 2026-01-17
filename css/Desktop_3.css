@@ -180,3 +180,15 @@ html, body{
     text-align: justify;
 }
 
+.slide_01 .text_slide, 
+.slide_03 .text_slide, 
+.slide_05 .text_slide, 
+.slide_07 .text_slide{
+    text-align: left;
+}
+
+.slide_02 .text_slide, 
+.slide_04 .text_slide, 
+.slide_06 .text_slide{
+    text-align: right;
+}
