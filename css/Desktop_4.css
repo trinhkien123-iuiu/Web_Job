@@ -106,6 +106,7 @@
 }
 #steps h2{
     color: var(--color-main);
+    font-size: 28px;
 }
 
 .steps_content{
@@ -147,7 +148,7 @@
 }
 .content p{
     color: var(--color-main);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
 }
 
