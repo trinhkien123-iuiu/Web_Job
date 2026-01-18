@@ -113,7 +113,3 @@
     color: var(--color-main);
 }
 
-#map>img{
-    border: 3px dotted var(--color-main);
-    width: 40%;
-}
