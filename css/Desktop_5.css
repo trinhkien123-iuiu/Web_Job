@@ -69,13 +69,15 @@
     background-color: var(--main-text-click);
     color: var(--color-back02);
     font-style: italic;
+    
 }
 
 .button_contact button:hover{
     cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}.button2:hover {  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-#map{
+#map{   
     display: flex;
     flex-direction: row;
     gap: 80px;
