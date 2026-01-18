@@ -5,7 +5,7 @@ const products = {
             id: `sofa-${i + 1}`,
             name: 'Sofa',
             category: 'sofa',
-            image: '../pics/Sofa căn hộ đg Bưởi/z7391411977723_d45b66880ff799f0daf0233b925ab4ae.jpg'
+            image: '../pics/Sofa căn hộ đg Bưởi/pic1.jpg'
         })),
         'arm': Array(6).fill(null).map((_, i) => ({
             id: `arm-${i + 1}`,
@@ -92,12 +92,26 @@ const products = {
     }
 };
 
+const isFiltering = false;
 // Get all products for a specific category
 function getProductsByCategory(mainCategory, subCategory) {
     if (products[mainCategory] && products[mainCategory][subCategory]) {
         return products[mainCategory][subCategory];
     }
     return [];
+}
+function getProductsByKeyword(keyword) {
+    const result = [];
+    for (const mainCategory in products) {
+        for (const subCategory in products[mainCategory]) {
+            products[mainCategory][subCategory].forEach(product => {
+                if (product.name.toLowerCase().includes(keyword.toLowerCase())) {
+                    result.push(product);
+                }
+            });
+        }
+    }
+    return result;
 }
 
 // Render products to the DOM
@@ -142,6 +156,15 @@ function setupCategoryFilters() {
                 subRadio.checked = false;
             });
             
+            // Show/hide subcategories based on parent
+            subCategoryRadios.forEach(subRadio => {
+                const subLabel = subRadio.closest('.subcategory-label');
+                if (subRadio.dataset.parent === mainCategory) {
+                    subLabel.style.display = 'flex';
+                } 
+            });
+            
+
             // If a subcategory was previously selected for this category, select the first one
             const firstSubCategory = document.querySelector(`.sub-category-radio[data-parent="${mainCategory}"]`);
             if (firstSubCategory) {
@@ -154,6 +177,7 @@ function setupCategoryFilters() {
     // Handle subcategory change
     subCategoryRadios.forEach(radio => {
         radio.addEventListener('change', function() {
+            isFiltering=true;
             filterProducts();
         });
     });
@@ -164,6 +188,7 @@ function filterProducts() {
     const selectedSubCategory = document.querySelector('.sub-category-radio:checked');
     const selectedMainCategory =  document.querySelector(`.main-category-radio[value="${selectedSubCategory.getAttribute('data-parent')}"]`);
     selectedMainCategory.checked = true; //Follow theo subcategory
+
     
     if (!selectedMainCategory || !selectedSubCategory) {
         return;
@@ -172,7 +197,7 @@ function filterProducts() {
     const mainCategory = selectedMainCategory.value;
     const subCategory = selectedSubCategory.value;
     
-    const filteredProducts = getProductsByCategory(mainCategory, subCategory);
+    const filteredProducts =  getProductsByCategory(mainCategory, subCategory);
     renderProducts(filteredProducts);
 }
 
@@ -189,8 +214,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         subCategoryRadios.forEach(subRadio => {
             const subLabel = subRadio.closest('.subcategory-label');
-                subLabel.style.display = 'flex';
-            
+
+            if (subRadio.dataset.parent !== mainCategory) {
+                subLabel.style.display = 'none';
+            }
+
         });
     }
     

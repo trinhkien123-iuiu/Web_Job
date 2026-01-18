@@ -1,14 +1,18 @@
 :root{
     --color-text-footer: #FAF5EC;
 }
+
 .footer *{
     color: var(--color-text-footer);
     letter-spacing: 1.2px;
+    font-size: 16px;
 }
+
 body{
     padding: 0;
     margin: 0;
 }
+
 .footer {
     background-color: var(--color-main);
     padding-top: 34px;
@@ -19,16 +23,17 @@ body{
 
 .footer a{
     text-decoration: none;
-    
 }
 
 .footer li{
     list-style: none;
     font-weight: 300;
 }
+
 .footer strong{
     font-weight: 700 !important;
 }
+
 .intro, .footer_links, .footer_info{
     display: flex;
     flex-direction: column;
@@ -37,6 +42,12 @@ body{
 .footer_links{
    text-wrap: nowrap;
 }
+
+.footer_links{
+   text-wrap: nowrap;
+   gap: 18px;
+}
+
 .intro{
     width: 24vw;
 
@@ -48,7 +59,7 @@ body{
     align-items: flex-start;
     gap: 18%;
     padding: 0 10%;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid var(--color-text-footer);
     margin-bottom: 15px;
 }
 
@@ -57,17 +68,20 @@ body{
     gap: 25px; 
     padding-left: 20px;
 }
+
 .footer_info span{
     padding-left: 0;
 }
+
 .footer_info li{
     display: flex;
     align-items: center; 
     gap: 5%;            
     line-height: 1.1;
 }
+
 .footer_links a:hover{
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid var(--color-text-footer);
 }
 
 .footer > a{

@@ -1,7 +1,9 @@
+
 body {
   font-family: var(--font-sans);
   font-weight: 350;
 }
+
 
 /* Breadcrumb */
 .breadcrumb {
@@ -140,6 +142,7 @@ body {
     text-align: center;
     color: var(--color-main);
     font-weight: 350;
+
 }
 
 /* Responsive */

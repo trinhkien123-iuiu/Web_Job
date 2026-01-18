@@ -5,7 +5,10 @@
   --main-text-click: #a2762f;
   --font-sans: "SVN-Gilroy", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
-
+body{
+  font-family: var(--font-sans);
+  font-weight: 350;
+}
 .header-buffer {
   height: 65px;
 }
@@ -65,7 +68,7 @@
   font-size: 16px;
   font-weight: 300;
 
-  color: #ffffff;
+  color: var(--color-back02);
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
@@ -83,7 +86,7 @@
   padding: 8px 12px;
 
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.18);
+  background: rgba(137, 137, 137, 0.18);
   min-width: 220px;
 }
 

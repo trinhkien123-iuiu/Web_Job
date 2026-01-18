@@ -1,0 +1,119 @@
+:root {
+  --color-main: #423625;
+  --color-back01: #f0e9dc;
+  --color-back02: #faf5ec;
+  --main-text-click: #a2762f;
+  --font-sans: "SVN-Gilroy", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#contact_site{
+    background-color: var(--color-back02);
+    position: relative;
+}
+
+#contact_site>span{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    color: var(--color-main);
+}
+#contact_site a{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--color-main);
+
+}
+
+#contact_site a:hover{
+    color: var(--main-text-click);
+    border-bottom: 1px solid var(--main-text-click);
+}
+
+.section{
+    display: flex;
+    flex-direction: column;
+}
+
+#contact{
+    width: 70%;
+    height: 200px;
+    background-color: var(--color-back01);
+    padding: 50px 100px 0 100px;
+    margin: 80px auto 0;
+    color: var(--color-main);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.button_contact{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 80px;
+    padding-top: 10px;
+}
+
+.button_contact button{
+    border-radius: 20px;
+    border: none;
+    height: 40px;
+    background-color: var(--main-text-click);
+    color: var(--color-back02);
+    font-style: italic;
+}
+
+.button_contact button:hover{
+    cursor: pointer;
+}
+
+#map{
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    padding: 100px;
+    justify-content: center;
+}
+
+#map .information{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.information{
+    width: 22%;
+    gap: 25px; 
+    padding-left: 20px;
+}
+
+.information span{
+    padding-left: 0;
+}
+
+.information li{
+    display: flex;
+    align-items: center; 
+    gap: 5%;            
+    line-height: 1.1;
+    font-size: 18px;
+    color: var(--color-main);
+}
+.information li:nth-child(1){
+    font-size: 34px;
+    font-weight: 400;
+    color: var(--color-main);
+}
+
+#map>img{
+    border: 3px dotted var(--color-main);
+    width: 40%;
+}
