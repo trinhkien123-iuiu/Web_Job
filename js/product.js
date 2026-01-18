@@ -142,14 +142,6 @@ function setupCategoryFilters() {
                 subRadio.checked = false;
             });
             
-            // Show/hide subcategories based on parent
-            subCategoryRadios.forEach(subRadio => {
-                const subLabel = subRadio.closest('.subcategory-label');
-                if (subRadio.dataset.parent === mainCategory) {
-                    subLabel.style.display = 'flex';
-                } 
-            });
-            
             // If a subcategory was previously selected for this category, select the first one
             const firstSubCategory = document.querySelector(`.sub-category-radio[data-parent="${mainCategory}"]`);
             if (firstSubCategory) {
@@ -169,8 +161,9 @@ function setupCategoryFilters() {
 
 // Filter products based on selected categories
 function filterProducts() {
-    const selectedMainCategory = document.querySelector('.main-category-radio:checked');
     const selectedSubCategory = document.querySelector('.sub-category-radio:checked');
+    const selectedMainCategory =  document.querySelector(`.main-category-radio[value="${selectedSubCategory.getAttribute('data-parent')}"]`);
+    selectedMainCategory.checked = true; //Follow theo subcategory
     
     if (!selectedMainCategory || !selectedSubCategory) {
         return;
@@ -196,9 +189,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         subCategoryRadios.forEach(subRadio => {
             const subLabel = subRadio.closest('.subcategory-label');
-            if (subRadio.dataset.parent !== mainCategory) {
-                subLabel.style.display = 'none';
-            }
+                subLabel.style.display = 'flex';
+            
         });
     }
     

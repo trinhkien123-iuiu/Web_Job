@@ -6,9 +6,6 @@
   --font-sans: "SVN-Gilroy", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-* {
-  font-family: var(--font-sans);
-}
 .header-buffer {
   height: 65px;
 }
