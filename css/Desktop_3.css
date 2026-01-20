@@ -70,6 +70,7 @@ html, body{
 #slider a:hover{
     color: var(--main-text-click);
     border-bottom: 1px solid var(--main-text-click);
+    transform: translateY(-1px);
 }
 
 /* Sub_slider */
