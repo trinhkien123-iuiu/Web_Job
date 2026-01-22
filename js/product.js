@@ -91,8 +91,32 @@ const products = {
         }))
     }
 };
-
-const isFiltering = false;
+var isFiltering = false;
+function setupKeywordSearch() {
+    
+  const searchInput = keyword || document.getElementById('search-input');
+    
+    if (!searchInput) {
+        console.warn('Search input not found');
+        return;
+    }
+    
+    searchInput.addEventListener('keydown', function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent form submission if any
+            const keywordValue = this.value.trim();
+            if (keywordValue.length > 0) {
+                isFiltering = true;
+                renderProducts(getProductsByKeyword(keywordValue));
+            } else {
+                // If empty, show all products from current category
+                isFiltering = false;
+                filterProducts();
+            }
+        }
+    }
+    ); 
+}
 // Get all products for a specific category
 function getProductsByCategory(mainCategory, subCategory) {
     if (products[mainCategory] && products[mainCategory][subCategory]) {
@@ -205,7 +229,16 @@ function filterProducts() {
 document.addEventListener('DOMContentLoaded', function() {
     // Set up event listeners
     setupCategoryFilters();
-    
+     const setupSearchWithRetry = () => {
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            setupKeywordSearch();
+        } else {
+            // Retry after a short delay if header hasn't loaded yet
+            setTimeout(setupSearchWithRetry, 100);
+        }
+    };
+    setupSearchWithRetry();
     // Hide subcategories that don't belong to the initially selected main category
     const initiallySelectedMainCategory = document.querySelector('.main-category-radio:checked');
     if (initiallySelectedMainCategory) {
