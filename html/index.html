@@ -5,18 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
+    <link rel="icon" href="../pics/logo_kh_nen_mini.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/On_tap_lai/assets/font/themify-icons">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/trangchu.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/scroll-animation.css">
 </head>
 
 <body>
     <!-- Header -->
     <div id="site-header" data-include="../html/header.html"></div>
     <script src="../js/header.js"></script>
-
+<!-- Loader -->
+ <div class="loader">
+    <img src="../pics/Ripple@1x-1.9s-200px-200px.gif" alt="Loading">
+ </div>
     <div class="image-container">
         <img src="../pics/pic1-luxury.png" alt="An Bảo Home">
         <div class="overlay">
@@ -28,7 +33,7 @@
     </div>
 
 
-    <div class="gthieu">
+    <div class="gthieu scroll-animate">
         <div class="dong1">Nghệ Thuật Kiến Tạo Không Gian Sống</div>
         <div class="dong2"><span style="font-weight: 700;">An Bảo Home</span> – Thương hiệu nội thất cao cấp mang đến
             giải pháp không gian sống toàn diện, tinh tế, được nghiên cứu và chế tác tỉ mỉ nhằm tôn vinh giá trị ngôi
@@ -68,7 +73,7 @@
     </div>
 
 
-    <div class="dich-vu" style="background-color: var(--color-back02);">
+    <div class="dich-vu scroll-animate" style="background-color: var(--color-back02);">
         <div class="dong1">Dịch vụ của An Bảo Home</div>
         <div class="dong2">Chúng tôi mang đến giải pháp tổng thể từ bản vẽ 3D đến hiện thực hóa không gian sống. Với
             xưởng sản xuất trực tiếp tại Thạch Thất, chúng tôi cam kết chất lượng tinh xảo và tiến độ chuẩn xác cho mọi
@@ -92,7 +97,7 @@
     </div>
 
 
-    <div class="sp-noibat">
+    <div class="sp-noibat scroll-animate">
         <div class="dong1">Sản phẩm nổi bật</div>
         <div class="image-table">
             <div class="line-table">
@@ -155,6 +160,7 @@
     <!-- Footer -->
     <div id="site-footer" data-include="../html/footer.html"></div>
     <script src="../js/footer.js"></script>
+    <script src="../js/scroll-animation.js"></script>
 </body>
 
 </html>

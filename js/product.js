@@ -93,9 +93,8 @@ const products = {
 };
 var isFiltering = false;
 function setupKeywordSearch() {
-    
-  const searchInput = keyword || document.getElementById('search-input');
-    
+    const searchInput = keyword || document.getElementById('search-input');
+   
     if (!searchInput) {
         console.warn('Search input not found');
         return;
@@ -107,15 +106,22 @@ function setupKeywordSearch() {
             const keywordValue = this.value.trim();
             if (keywordValue.length > 0) {
                 isFiltering = true;
+                // Update URL with keyword parameter
+                const newUrl = new URL(window.location);
+                newUrl.searchParams.set('keyword', keywordValue);
+                window.history.pushState({}, '', newUrl);
+                // Filter products by keyword
                 renderProducts(getProductsByKeyword(keywordValue));
             } else {
-                // If empty, show all products from current category
+                // If empty, show all products from current category and remove keyword from URL
                 isFiltering = false;
+                const newUrl = new URL(window.location);
+                newUrl.searchParams.delete('keyword');
+                window.history.pushState({}, '', newUrl);
                 filterProducts();
             }
         }
-    }
-    ); 
+    }); 
 }
 // Get all products for a specific category
 function getProductsByCategory(mainCategory, subCategory) {
@@ -153,7 +159,7 @@ function renderProducts(productList) {
     productList.forEach(product => {
         const productItem = document.createElement('a');
         productItem.href = `#${product.id}`;
-        productItem.className = 'product-item';
+        productItem.className = 'product-item scroll-animate';
         
         productItem.innerHTML = `
             <img src="${product.image}" alt="${product.name}" onerror="this.src='../pics/logo kh nen 1.png'">
@@ -229,33 +235,51 @@ function filterProducts() {
 document.addEventListener('DOMContentLoaded', function() {
     // Set up event listeners
     setupCategoryFilters();
-     const setupSearchWithRetry = () => {
+    
+    // Check for keyword in URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const keywordParam = urlParams.get('keyword');
+    
+    const setupSearchWithRetry = () => {
         const searchInput = document.getElementById('search-input');
         if (searchInput) {
             setupKeywordSearch();
+            
+            // If keyword parameter exists, apply the search automatically
+            if (keywordParam) {
+                const keywordValue = decodeURIComponent(keywordParam);
+                searchInput.value = keywordValue;
+                isFiltering = true;
+                renderProducts(getProductsByKeyword(keywordValue));
+                return; // Don't run filterProducts() if we're searching by keyword
+            }
         } else {
             // Retry after a short delay if header hasn't loaded yet
             setTimeout(setupSearchWithRetry, 100);
+            return;
+        }
+        
+        // Hide subcategories that don't belong to the initially selected main category
+        const initiallySelectedMainCategory = document.querySelector('.main-category-radio:checked');
+        if (initiallySelectedMainCategory) {
+            const mainCategory = initiallySelectedMainCategory.value;
+            const subCategoryRadios = document.querySelectorAll('.sub-category-radio');
+            
+            subCategoryRadios.forEach(subRadio => {
+                const subLabel = subRadio.closest('.subcategory-label');
+
+                if (subRadio.dataset.parent !== mainCategory) {
+                    subLabel.style.display = 'none';
+                }
+
+            });
+        }
+        
+        // Render initial products (Giường - 24 products) only if not searching by keyword
+        if (!keywordParam) {
+            filterProducts();
         }
     };
     setupSearchWithRetry();
-    // Hide subcategories that don't belong to the initially selected main category
-    const initiallySelectedMainCategory = document.querySelector('.main-category-radio:checked');
-    if (initiallySelectedMainCategory) {
-        const mainCategory = initiallySelectedMainCategory.value;
-        const subCategoryRadios = document.querySelectorAll('.sub-category-radio');
-        
-        subCategoryRadios.forEach(subRadio => {
-            const subLabel = subRadio.closest('.subcategory-label');
-
-            if (subRadio.dataset.parent !== mainCategory) {
-                subLabel.style.display = 'none';
-            }
-
-        });
-    }
-    
-    // Render initial products (Giường - 24 products)
-    filterProducts();
 });
 
