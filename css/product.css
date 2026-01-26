@@ -6,15 +6,34 @@ body {
 
 
 /* Breadcrumb */
-.breadcrumb {
+/* .breadcrumb {
     padding: 20px 40px;
     background-color: var(--color-back01);
 }
 
 .breadcrumb p {
     margin: 0;
-    color: #666;
+    color: #000000;
     font-size: 14px;
+} */
+.breadcrumb>span{
+    display: flex;
+    flex-direction: row;
+    color: var(--color-main);
+    align-items: center;
+    padding-left: 35px;
+}
+.breadcrumb a{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--color-main);
+
+}
+
+.breadcrumb a:hover{
+    color: var(--main-text-click);
+    border-bottom: 1px solid var(--main-text-click);
 }
 
 /* Main container */

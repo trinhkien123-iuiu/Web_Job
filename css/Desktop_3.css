@@ -58,19 +58,19 @@ html, body{
     top: 50px;
     left: 100px;
     color: var(--color-back02);
-
 }
 #slider a{
     text-decoration: none;
     font-weight: 400;
     font-size: 17px;
-    color: var(--color-back02);
-
+    color: var(--color-back01);
 }
+
 
 #slider a:hover{
     color: var(--main-text-click);
     border-bottom: 1px solid var(--main-text-click);
+    transform: translateY(-1px);
 }
 
 /* Sub_slider */
