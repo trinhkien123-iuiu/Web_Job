@@ -10,7 +10,8 @@ body{
   font-weight: 350;
 }
 .header-buffer {
-  height: 65px;
+  height: 43px;
+  flex-shrink: 0;
 }
 
 .header {

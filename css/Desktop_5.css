@@ -7,113 +7,252 @@
 }
 
 *{
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+}
+
+html, body{
+  width: 100%;
+  overflow-x: hidden;
 }
 
 #contact_site{
-    background-color: var(--color-back02);
-    position: relative;
+  background-color: var(--color-back02);
+  position: relative;
 }
 
 #contact_site>span{
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    top: 15px;
-    left: 35px;
-    color: var(--color-main);
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 34px;
+  left: 35px;
+  color: var(--color-main);
 }
-#contact_site a{
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 14px;
-    color: var(--color-main);
 
+#contact_site a{
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--color-main);
 }
 
 #contact_site a:hover{
-    color: var(--main-text-click);
-    border-bottom: 1px solid var(--main-text-click);
-    transform: translateY(-1px);
-
+  color: var(--main-text-click);
+  border-bottom: 1px solid var(--main-text-click);
+  transform: translateY(-1px);
 }
 
 .section{
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 #contact{
-    width: 70%;
-    height: 200px;
-    background-color: var(--color-back01);
-    padding: 50px 100px 0 100px;
-    margin: 80px auto 0;
-    color: var(--color-main);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border-radius: 10px;
+  width: 70%;
+  height: 200px;
+  background-color: var(--color-back01);
+  padding: 50px 100px 0 100px;
+  margin: 80px auto 0;
+  color: var(--color-main);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+}
+
+#contact h2,
+#contact p{
+  color: var(--color-main);
 }
 
 .button_contact{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 80px;
-    padding-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 80px;
+  padding-top: 10px;
 }
 
 .button_contact button{
-    border-radius: 20px;
-    border: none;
-    height: 40px;
-    background-color: var(--main-text-click);
-    color: var(--color-back02);
-    font-style: italic;
-    
+  border-radius: 20px;
+  border: none;
+  height: 40px;
+  background-color: var(--main-text-click);
+  color: var(--color-back02);
+  font-style: italic;
 }
 
 .button_contact button:hover{
-    cursor: pointer;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}.button2:hover {  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0,0.19);
 }
 
-#map{   
-    display: flex;
-    flex-direction: row;
-    gap: 80px;
-    padding: 100px;
-    justify-content: center;
+#map{
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  padding: 100px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 #map .information{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .information{
-    width: 22%;
-    gap: 25px; 
-    padding-left: 20px;
+  width: 22%;
+  padding-left: 20px;
 }
 
 .information span{
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .information li{
-    display: flex;
-    align-items: center; 
-    gap: 5%;            
-    line-height: 1.1;
-    font-size: 18px;
-    color: var(--color-main);
-}
-.information li:nth-child(1){
-    font-size: 34px;
-    font-weight: 400;
-    color: var(--color-main);
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  line-height: 1.1;
+  font-size: 18px;
+  color: var(--color-main);
 }
 
+.information li:nth-child(1){
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--color-main);
+}
+
+/* iframe co giãn, không tràn */
+#map iframe{
+  width: 500px;
+  height: 350px;
+  border: 0;
+  border-radius: 10px;
+  max-width: 100%;
+}
+
+/* laptop nhỏ / tablet ngang */
+@media (max-width: 1200px){
+  /* breadcrumb sát lại */
+  #contact_site>span{
+    left: 16px;
+  }
+
+  /* padding gọn hơn */
+  #contact{
+    padding: 40px 60px 0 60px;
+  }
+
+  #map{
+    padding: 60px 24px;
+    gap: 40px;
+  }
+
+  /* cột info rộng hơn chút để không bị bó */
+  .information{
+    width: 32%;
+    padding-left: 0;
+  }
+}
+
+/* tablet */
+@media (max-width: 992px){
+  /* contact box rộng hơn để vừa màn */
+  #contact{
+    width: min(92%, 900px);
+    height: auto;                 /* ✅ bỏ cố định height để không tràn chữ */
+    padding: 32px 24px;
+    margin: 70px auto 0;
+  }
+
+  /* nút tự xuống 2 hàng */
+  .button_contact{
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* map chuyển dần gọn lại */
+  #map{
+    gap: 24px;
+  }
+
+  .information{
+    width: 40%;
+  }
+
+  #map iframe{
+    width: 100%;
+    height: 320px;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px){
+  /* breadcrumb */
+  #contact_site>span{
+    top: 16px;
+  }
+
+  /* contact box */
+  #contact{
+    margin: 60px auto 0;
+    padding: 28px 16px;
+    border-radius: 10px;
+  }
+
+  #contact h2{
+    font-size: 22px;
+  }
+
+  #contact p{
+    line-height: 1.5;
+    font-size: 14px;
+  }
+
+  /* nút xuống 1 cột */
+  .button_contact{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .button_contact button{
+    height: 42px;
+  }
+
+  /* map xuống 1 cột: info trên, map dưới (giữ nội dung + màu sắc) */
+  #map{
+    flex-direction: column;
+    padding: 40px 16px 60px;
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .information{
+    width: 100%;
+  }
+
+  .information li{
+    font-size: 16px;
+  }
+
+  .information li:nth-child(1){
+    font-size: 26px;
+  }
+
+  #map iframe{
+    width: 100%;
+    height: 320px;
+  }
+}
+
+/* thiết bị cảm ứng: bỏ hover transform để khỏi “nhảy” */
+@media (hover: none){
+  #contact_site a:hover{
+    transform: none;
+  }
+}
