@@ -29,6 +29,7 @@ html, body{
   top: 14px;
   left: 35px;
   color: var(--color-main);
+  z-index: 2; 
 }
 
 #contact_site a{

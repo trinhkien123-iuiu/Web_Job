@@ -17,20 +17,6 @@ html, body{
   overflow-x: hidden;
 }
 
-/* Desktop/laptop: không cần khoảng đệm dưới header cho hero slider */
-@media (min-width: 721px){
-  .header-buffer{
-    height: 0 !important;
-  }
-}
-
-/* Mobile: vẫn cần buffer để nội dung không bị header che */
-@media (max-width: 720px){
-  .header-buffer{
-    height: 95px !important;
-  }
-}
-
 
 #slider{
   padding-top: 30%;
@@ -77,7 +63,7 @@ html, body{
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 72px;
+  top: 52px;
   left: 100px;
 }
 
@@ -92,17 +78,6 @@ html, body{
   color: var(--main-text-click);
   border-bottom: 1px solid var(--main-text-click);
   transform: translateY(-1px);
-}
-
-/* scale breadcrumb theo responsive chung */
-@media (max-width: 992px){
-  #slider span{
-    left: 24px;
-    top: 24px;
-    max-width: calc(100% - 48px);
-    font-size: 13px;
-    flex-wrap: wrap;
-  }
 }
 
 #section_slider{
@@ -249,12 +224,9 @@ html, body{
     background-position: center;
   }
 
+  /* Mobile/tablet: ẩn breadcrumb cho gọn */
   #slider span{
-    left: 16px;
-    top: 16px;
-    font-size: 11px;
-    max-width: calc(100% - 32px);
-    flex-wrap: wrap;
+    display: none;
   }
 
   .slider_text{
@@ -295,9 +267,12 @@ html, body{
 
   /* Hero slider */
   #slider{
-    padding-top: 70%;
-    height: 20px;
-    bottom: 10px;
+    padding-top: 65%;
+  }
+
+  /* Mobile nhỏ: ẩn breadcrumb */
+  #slider span{
+    display: none;
   }
 
   .slider_text{
@@ -311,15 +286,6 @@ html, body{
 
   .slider_text p{
     font-size: 13px;
-  }
-
-  #slider span{
-    left: 12px;
-    top: 24px;
-    font-size: 14px;
-  }
-  #slider a{
-    font-size: 14px;
   }
 
   /* Block slider dưới: ưu tiên đọc, không đổi thứ tự */

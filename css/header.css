@@ -4,6 +4,7 @@
   --color-back02: #faf5ec;
   --main-text-click: #a2762f;
   --font-sans: "SVN-Gilroy", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --header-height: 65px;
 }
 html, body{
   margin: 0;
@@ -12,9 +13,11 @@ html, body{
 body{
   font-family: var(--font-sans);
   font-weight: 350;
+  /* dùng padding-top thay cho header-buffer để tránh “tách rời” */
+  padding-top: var(--header-height) !important;
 }
 .header-buffer {
-  height: 65px;
+  height: 0;
   flex-shrink: 0;
 }
 
@@ -23,7 +26,7 @@ body{
   top: 0;
   left: 0;
   right: 0;
-  height: 65px;
+  height: var(--header-height);
   padding: 0 130px;
 
   display: flex;
@@ -56,6 +59,60 @@ body{
   height: 44px;
   object-fit: contain;
   display: block;
+}
+
+.hamburger-btn{
+  display: none;
+  border: 0;
+  background: transparent;
+  padding: 10px;
+  margin: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.hamburger-icon{
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-back02);
+  border-radius: 999px;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: var(--color-back02);
+  border-radius: 999px;
+}
+.hamburger-icon::before{ top: -7px; }
+.hamburger-icon::after{ top: 7px; }
+
+.mobile-overlay{
+  display: none;
+}
+
+.mobile-drawer{
+  display: contents; /* desktop: giữ bố cục cũ */
+}
+
+.drawer-header{
+  display: none;
+}
+
+.drawer-close{
+  border: 0;
+  background: transparent;
+  color: var(--color-back02);
+  font-size: 34px;
+  line-height: 1;
+  padding: 0 6px;
+  cursor: pointer;
 }
 
 .menu-nav {
@@ -123,12 +180,10 @@ body{
 }
 
 @media (max-width: 720px) {
-  /* Mobile: giữ bố cục gốc nhưng cho header tự xuống hàng */
+  /* Mobile: chỉ hiện logo + nút 3 gạch */
   .header{
-    padding: 8px 16px;
-    height: auto;
-    min-height: 65px;
-    flex-wrap: wrap;
+    padding: 0 12px;
+    height: 65px;
     gap: 10px;
   }
 
@@ -142,39 +197,121 @@ body{
     height: 40px;
   }
 
-  /* Search chiếm phần còn lại trên hàng 1 */
+  .hamburger-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ẩn menu/search trên thanh top, đưa vào drawer */
+  .menu-nav,
   .search{
-    flex: 1 1 180px;
-    min-width: 0;
-    padding: 8px 10px;
+    display: none;
   }
 
-  /* Menu hiển thị lại ở hàng 2, cuộn ngang nhẹ để không vỡ */
-  .menu-nav{
-    display: flex;
-    width: 100%;
-    order: 3;
-    justify-content: flex-start;
-    gap: 18px;
-    overflow-x: auto;
-    overflow-y: hidden;
+  /* hidden attribute luôn thắng */
+  [hidden]{
+    display: none !important;
+  }
+
+  .mobile-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 998;
+  }
+
+  .mobile-drawer{
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(86vw, 360px);
+    background: var(--color-main);
+    z-index: 999;
+    padding: 16px 14px 20px;
+    transform: translateX(102%);
+    transition: transform .25s ease;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 4px;
-    flex: 0 0 auto;
+    box-sizing: border-box;
   }
 
-  .menu-nav::-webkit-scrollbar{
+  .drawer-header{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+
+  .mobile-drawer .search{
+    display: flex;
+    width: min(100%, 320px);
+    min-width: 0;
+    padding: 10px 12px;
+    margin: 0 auto 14px;
+    border-radius: 999px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .mobile-drawer .search input{
+    min-width: 0;
+  }
+
+  .mobile-drawer .menu-nav{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    width: 100%;
+  }
+
+  .mobile-drawer .menu-nav li{
+    padding: 14px 2px;
+    border-top: 1px solid rgba(250,245,236,.35);
+  }
+  .mobile-drawer .menu-nav li:last-child{
+    border-bottom: 1px solid rgba(250,245,236,.35);
+  }
+
+  .mobile-drawer .menu-nav a{
+    font-size: 18px;
+    font-weight: 350;
+  }
+
+  /* buffer theo chiều cao header */
+  .header-buffer{
     height: 0;
   }
 
-  .menu-nav a{
-    font-size: 14px;
-    white-space: nowrap;
+  /* trạng thái mở */
+  .header.is-open .mobile-overlay{
+    display: block;
   }
 
-  /* buffer theo chiều cao thực tế của header (tránh bị che nội dung) */
-  .header-buffer{
-    height: 95px;
+  .header.is-open .mobile-drawer{
+    transform: translateX(0);
+  }
+
+  /* trong drawer: ô tìm kiếm lên đầu, rồi đến menu */
+  .mobile-drawer{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-drawer .drawer-header{
+    order: 0;
+  }
+
+  .mobile-drawer .search{
+    order: 1;
+  }
+
+  .mobile-drawer .menu-nav{
+    order: 2;
   }
 }
 

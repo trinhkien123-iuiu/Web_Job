@@ -22,6 +22,8 @@ body {
     color: var(--color-main);
     align-items: center;
     padding-left: 35px;
+    position: relative;
+    z-index: 1; 
 }
 .breadcrumb a{
     text-decoration: none;

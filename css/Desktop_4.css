@@ -27,8 +27,10 @@ html, body{
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 29px;
+  top: 52px;
   left: 100px;
+  z-index: 2; 
+  align-items: center;
 }
 
 #service_header a{
