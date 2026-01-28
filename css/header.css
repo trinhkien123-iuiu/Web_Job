@@ -5,12 +5,16 @@
   --main-text-click: #a2762f;
   --font-sans: "SVN-Gilroy", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
+html, body{
+  margin: 0;
+  padding: 0;
+}
 body{
   font-family: var(--font-sans);
   font-weight: 350;
 }
 .header-buffer {
-  height: 43px;
+  height: 65px;
   flex-shrink: 0;
 }
 
@@ -33,6 +37,10 @@ body{
   -webkit-backdrop-filter: blur(6px);
 
   z-index: 999;
+
+  /* iOS/Safari: giúp fixed ổn định khi scroll */
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .logo_header {
@@ -115,7 +123,58 @@ body{
 }
 
 @media (max-width: 720px) {
-  .menu-nav { display: none; }
-  .search { flex: 1; min-width: 0; }
+  /* Mobile: giữ bố cục gốc nhưng cho header tự xuống hàng */
+  .header{
+    padding: 8px 16px;
+    height: auto;
+    min-height: 65px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .logo_header{
+    width: 52px;
+    min-width: 52px;
+  }
+
+  .logo_header img{
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Search chiếm phần còn lại trên hàng 1 */
+  .search{
+    flex: 1 1 180px;
+    min-width: 0;
+    padding: 8px 10px;
+  }
+
+  /* Menu hiển thị lại ở hàng 2, cuộn ngang nhẹ để không vỡ */
+  .menu-nav{
+    display: flex;
+    width: 100%;
+    order: 3;
+    justify-content: flex-start;
+    gap: 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    flex: 0 0 auto;
+  }
+
+  .menu-nav::-webkit-scrollbar{
+    height: 0;
+  }
+
+  .menu-nav a{
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  /* buffer theo chiều cao thực tế của header (tránh bị che nội dung) */
+  .header-buffer{
+    height: 95px;
+  }
 }
 

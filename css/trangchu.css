@@ -1,133 +1,275 @@
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+
+.image-container{
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
-
-.image-container {
-    position: relative;
-    display: block;
-    width: 100%;
-    text-align: center;
+.image-container img{
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.image-container img {
-    width: 100%;
-    display: block;
-    height: auto;
+.overlay{
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
-.abhome {
-    font-size: 54px;
-    font-weight: 700;
-    color: var(--color-back02);
+.abhome{
+  font-size: 54px;
+  font-weight: 700;
+  color: var(--color-back02);
 }
 
-.luxury {
-    font-size: 28px;
-    letter-spacing: 0.33em;
-    color: var(--color-back02);
+.luxury{
+  font-size: 28px;
+  letter-spacing: 0.33em;
+  color: var(--color-back02);
 }
 
 .gthieu,
 .dich-vu,
-.sp-noibat {
-    background-color: var(--color-back01);
-    justify-items: center;
-    text-align: center;
-    color: var(--color-main);
-    padding: 90px;
-    margin: 0;
+.sp-noibat{
+  background-color: var(--color-back01);
+  text-align: center;
+  color: var(--color-main);
+  padding: 90px;
+  margin: 0;
 }
 
-.dong1 {
-    font-size: 36px;
-    font-weight: 700;
+.dong1{
+  font-size: 36px;
+  font-weight: 700;
 }
 
-.dong2 {
+.dong2{
+  font-size: 16px;
+  width: 60%;
+  margin: 25px auto 65px;
+  line-height: 1.5;
+}
+
+.text-anh{
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.gthieu .image-table{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.line-table{
+  width: 100%;
+  display: flex;
+  justify-content: space-between; 
+  padding-bottom: 28px;
+}
+
+
+.hai-dichvu{
+  display: flex;
+  gap: 75px;
+}
+
+.text-dichvu{
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-back02);
+  transition: transform 0.3s;
+}
+
+.text-dichvu:hover{
+  transform: scale(1.01);
+}
+
+.sp-noibat .image-table{
+  width: 95%;
+  margin: 65px auto 0;
+}
+
+.sp{
+  background-color: var(--color-back02);
+  width: 20%;                
+  padding: 20px 20px 0;
+}
+
+.sp img{
+  width: 100%;
+  display: block;
+}
+
+.sp .text-sp{
+  margin: 30px;
+  font-size: 16px;
+}
+
+
+.xemthem{
+  background-color: var(--main-text-click);
+  display: inline-block;
+  font-size: 18px;
+  color: var(--color-back01);
+  border-radius: 26px;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin-top: 30px;
+  transition: all 0.3s ease;
+}
+
+.xemthem:hover{
+  color: #BDB8AE;
+}
+
+@media (max-width: 992px){
+
+  /* padding section mềm hơn */
+  .gthieu,
+  .dich-vu,
+  .sp-noibat{
+    padding: clamp(28px, 6vw, 90px);
+  }
+
+  /* hero text */
+  .abhome{ font-size: clamp(28px, 6vw, 54px); }
+  .luxury{
+    font-size: clamp(14px, 2.6vw, 28px);
+    letter-spacing: clamp(0.12em, 2vw, 0.33em);
+  }
+
+  /* heading/desc */
+  .dong1{ font-size: clamp(22px, 3.2vw, 36px); }
+  .dong2{
+    width: min(720px, 92%);
+    font-size: clamp(14px, 1.6vw, 16px);
+    margin: 18px auto clamp(28px, 5vw, 65px);
+  }
+
+  /* gthieu: cho wrap 2 cột */
+  .line-table{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  .gthieu .line-table > div{
+    width: calc(50% - 8px);
+  }
+
+  /* dịch vụ: 2 cột -> tự xuống */
+  .hai-dichvu{
+    flex-wrap: wrap;
+    gap: clamp(16px, 4vw, 75px);
+  }
+  .hai-dichvu .image-container{
+    flex: 1 1 420px;
+  }
+  .text-dichvu{
+    font-size: clamp(16px, 2.4vw, 24px);
+    padding: 0 12px;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  /* sp nổi bật: 4 -> 2 */
+  .sp-noibat .image-table{
+    width: 100%;
+    margin-top: clamp(22px, 5vw, 65px);
+  }
+  .sp{
+    width: calc(50% - 12px);
+  }
+}
+
+@media (max-width: 576px){
+
+  /* gthieu: 2 -> 1 */
+  .gthieu .line-table > div{
+    width: 100%;
+  }
+
+  /* sp: 2 -> 1 */
+  .sp{
+    width: 100%;
+  }
+
+  .xemthem{
     font-size: 16px;
-    width: 60%;
-    margin: 25px 0 65px 0;
+    padding: 10px 22px;
+  }
 }
 
-.text-anh {
+/* iPhone 12 & màn nhỏ hơn (~390px) */
+@media (max-width: 430px){
+  /* Banner đầu trang */
+  .abhome{
+    font-size: clamp(24px, 7vw, 30px);
+  }
+
+  .luxury{
+    font-size: clamp(12px, 3vw, 16px);
+    letter-spacing: 0.16em;
+  }
+
+  /* Các section chính co padding lại cho đỡ “nặng” nhưng vẫn giữ nền/màu */
+  .gthieu,
+  .dich-vu,
+  .sp-noibat{
+    padding: 28px 16px 36px;
+  }
+
+  .dong1{
     font-size: 20px;
-    font-weight: 600;
-    margin-top: 15px;
-}
+  }
 
-.gthieu .image-table {
-    align-items: center;
-    justify-items: center;
-    width: 75%;
-}
-
-.line-table {
+  .dong2{
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 0 28px 0;
-}
+    font-size: 14px;
+    margin: 16px auto 26px;
+  }
 
-.hai-dichvu {
-    display: flex;
-    gap: 75px;
-}
-
-.text-dichvu {
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--color-back02);
-    transition: transform 0.3s;
-}
-
-.text-dichvu:hover {
-    transform: scale(1.01);
-}
-
-.sp-noibat .image-table {
-    align-items: center;
-    justify-items: center;
-    width: 95%;
-    margin-top: 65px;
-}
-
-.sp {
-    background-color: var(--color-back02);
-    width: 20%;
-    padding: 20px 20px 0 20px;
-}
-
-.sp img {
+  /* Box giới thiệu sản phẩm */
+  .gthieu .image-table{
     width: 100%;
-}
+  }
 
-.sp .text-sp {
-    margin: 30px;
-    font-size: 16px;
-}
-
-.xemthem {
-    background-color: var(--main-text-click);
-    display: inline-block;
+  .text-anh{
     font-size: 18px;
-    color: var(--color-back01);
-    border-radius: 26px;
-    padding: 10px 30px;
-    text-decoration: none;
-    margin-top: 30px;
-    transition: all 0.3s ease;
-}
+  }
 
-.xemthem:hover {
-    color: #BDB8AE;
+  /* 2 box dịch vụ: giữ chồng dọc như hiện tại, chỉ thu padding text */
+  .hai-dichvu .image-container{
+    max-width: 100%;
+  }
+
+  .text-dichvu{
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  /* Sản phẩm nổi bật */
+  .sp-noibat .image-table{
+    width: 100%;
+  }
+
+  .sp{
+    padding: 16px 16px 0;
+  }
+
+  .sp .text-sp{
+    margin: 18px 8px 26px;
+    font-size: 15px;
+  }
+
+  .xemthem{
+    font-size: 15px;
+    padding: 8px 20px;
+  }
 }

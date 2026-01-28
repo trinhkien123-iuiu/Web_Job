@@ -26,7 +26,7 @@ html, body{
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 34px;
+  top: 14px;
   left: 35px;
   color: var(--color-main);
 }
@@ -189,6 +189,11 @@ html, body{
     width: 100%;
     height: 320px;
   }
+
+  #contact_site>span{
+    margin-top: 16px;
+  }
+
 }
 
 /* mobile */
@@ -250,9 +255,68 @@ html, body{
   }
 }
 
+/* breadcrumb scale nhỏ dần theo responsive */
+@media (max-width: 576px){
+  #contact_site>span{
+    font-size: 13px;
+  }
+}
+
 /* thiết bị cảm ứng: bỏ hover transform để khỏi “nhảy” */
 @media (hover: none){
   #contact_site a:hover{
     transform: none;
+  }
+}
+
+/* iPhone 12 & màn nhỏ hơn (~390px) */
+@media (max-width: 430px){
+  /* breadcrumb sát mép hơn, tránh đè header */
+  #contact_site>span{
+    left: 12px;
+    top: 9px;
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Khối liên hệ */
+  #contact{
+    width: min(94%, 420px);
+    margin-top: 56px;
+    padding: 24px 14px;
+  }
+
+  #contact h2{
+    font-size: 20px;
+  }
+
+  #contact p{
+    font-size: 13px;
+  }
+
+  /* Nút: full width, khoảng cách vừa phải */
+  .button_contact{
+    gap: 10px;
+  }
+
+  .button_contact button{
+    font-size: 14px;
+  }
+
+  /* Thông tin + bản đồ */
+  #map{
+    padding: 32px 14px 44px;
+  }
+
+  .information li{
+    font-size: 15px;
+  }
+
+  .information li:nth-child(1){
+    font-size: 24px;
+  }
+
+  #map iframe{
+    height: 280px;
   }
 }

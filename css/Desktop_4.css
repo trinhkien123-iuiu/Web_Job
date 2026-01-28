@@ -27,7 +27,7 @@ html, body{
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 72px;
+  top: 29px;
   left: 100px;
 }
 
@@ -50,6 +50,9 @@ html, body{
   bottom: 100px;
   width: 100%;
   padding: 0 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
 }
 
 .service_text h2{
@@ -210,14 +213,19 @@ html, body{
   color: var(--color-main);
 }
 
-#up_footer img{
-  padding-left: 140px;
+.divider{
+  width: 1px;
+  height: 80px;
+  background-color: var(--main-text-click);
+  justify-self: center;
 }
+
 
 
 @media (max-width: 1200px){
   #service_header span{
     left: 40px;
+    top: 72px;
   }
 
   #up_footer{
@@ -239,10 +247,14 @@ html, body{
   #service_header span{
     left: 16px;
     top: 16px;
+    max-width: calc(100% - 32px);
+    font-size: 13px;
+    flex-wrap: wrap;
   }
 
   .service_text{
     bottom: 12%;
+    padding: 0 16px;
   }
 
   .service_text h2{
@@ -254,9 +266,15 @@ html, body{
     line-height: 1.4;
   }
 
-  /* Service content: từ 2 cột xuống 1 cột */
+  /* Service content: từ 2 cột xuống 1 cột, căn đều theo từng block */
   #service_content{
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* block thứ 2 đảo lại: ảnh trên, text dưới cho cân */
+  #service_content:nth-of-type(2){
+    flex-direction: column-reverse;
   }
 
   /* đảm bảo phần mô tả không quá cao khi xuống 1 cột */
@@ -310,6 +328,14 @@ html, body{
   #up_footer .section_footer{
     width: 100%;
   }
+
+  #service_header span{
+    left: 24px;
+    top: 24px;
+    max-width: calc(100% - 48px);
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
 }
 
 /* Mobile */
@@ -346,11 +372,101 @@ html, body{
   .content p{
     font-size: 12px;
   }
+
+  #service_header span{
+    left: 16px;
+    top: 16px;
+    font-size: 11px;
+    max-width: calc(100% - 32px);
+    flex-wrap: wrap;
+  }
+
+  .service_text{
+    padding: 0 16px;
+  }
+}
+
+/* iPhone 12 & breadcrumb scale */
+@media (max-width: 430px){
+  #service_header span{
+    left: 12px;
+    top: 12px;
+    font-size: 11px;
+    max-width: calc(100% - 24px);
+    flex-wrap: wrap;
+  }
+
+  .service_text{
+    padding: 0 12px;
+  }
 }
 
 /* Thiết bị cảm ứng: bỏ hover transform để khỏi “nhảy” */
 @media (hover: none){
   #service_header a:hover{
     transform: none;
+  }
+}
+
+/* iPhone 12 & màn nhỏ hơn (~390px) */
+@media (max-width: 430px){
+  /* Header dịch vụ */
+  #service_header{
+    padding-top: 70%;
+  }
+
+  .service_text{
+    bottom: 12%;
+    padding: 0 14px;
+  }
+
+  .service_text h2{
+    font-size: clamp(20px, 5.6vw, 26px);
+  }
+
+  .service_text p{
+    font-size: 14px;
+  }
+
+  #service_header span{
+    left: 12px;
+    top: 35px;
+    font-size: 14px;
+  }
+
+  #service_header a{
+    font-size: 14px;
+  }
+
+  /* Nội dung dịch vụ */
+  .decs ul{
+    width: min(480px, 94%);
+  }
+
+  .decs li{
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* Quy trình 5 bước */
+  #steps{
+    padding: 36px 0 40px;
+  }
+
+  #steps h2{
+    font-size: 20px;
+  }
+
+  .steps_content{
+    padding: 0 14px;
+  }
+
+  .img_box{
+    width: 100%;
+    max-width: 360px;
+  }
+  .divider{
+    height: 1px;
+    width: 50px;
   }
 }
