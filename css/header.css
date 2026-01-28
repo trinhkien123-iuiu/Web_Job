@@ -16,10 +16,10 @@ body{
   /* dùng padding-top thay cho header-buffer để tránh “tách rời” */
   padding-top: var(--header-height) !important;
 }
-.header-buffer {
+/* .header-buffer {
   height: 0;
   flex-shrink: 0;
-}
+} */
 
 .header {
   position: fixed;

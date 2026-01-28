@@ -207,6 +207,11 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Mobile: ẩn breadcrumb */
+    .breadcrumb{
+        display: none;
+    }
+
     .breadcrumb>span{
         padding-left: 16px;
         margin-top: 16px;

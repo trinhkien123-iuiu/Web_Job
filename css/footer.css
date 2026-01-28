@@ -28,6 +28,12 @@
     font-weight: 300;
 }
 
+/* Đồng bộ giữa các trang (trang có/không có reset *) */
+.footer ul{
+    margin: 0;
+    padding: 0;
+}
+
 .footer strong{
     font-weight: 700 !important;
 }
