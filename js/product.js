@@ -1,96 +1,242 @@
-// Product data - This would typically come from a database or API
-const products = {
-    'phong-khach': {
-        'sofa': Array(8).fill(null).map((_, i) => ({
-            id: `sofa-${i + 1}`,
-            name: 'Sofa',
-            category: 'sofa',
-            image: '../pics/Sofa căn hộ đg Bưởi/pic1.jpg'
-        })),
-        'arm': Array(6).fill(null).map((_, i) => ({
-            id: `arm-${i + 1}`,
-            name: 'Arm',
-            category: 'arm',
-            image: '../pics/546627022_1363997822398561_581512338130264891_n.jpg'
-        })),
-        'ban-tra': Array(5).fill(null).map((_, i) => ({
-            id: `ban-tra-${i + 1}`,
-            name: 'Bàn trà',
-            category: 'ban-tra',
-            image: '../pics/bafn tra.jpg'
-        })),
-        'ke-tv': Array(3).fill(null).map((_, i) => ({
-            id: `ke-tv-${i + 1}`,
-            name: 'Kệ TV',
-            category: 'ke-tv',
-            image: '../pics/thiet-ke-thi-cong-noi-that-4.png'
-        })),
-        'tu-giay': Array(2).fill(null).map((_, i) => ({
-            id: `tu-giay-${i + 1}`,
-            name: 'Tủ giày',
-            category: 'tu-giay',
-            image: '../pics/vn-11134207-7r98o-m07d7985vi0daa.jpg'
-        }))
-    },
-    'phong-an': {
-        'ban-an': Array(8).fill(null).map((_, i) => ({
-            id: `ban-an-${i + 1}`,
-            name: 'Bàn ăn',
-            category: 'ban-an',
-            image: '../pics/thietkenoithatchungcutrongoi8-3422.jpg'
-        })),
-        'ghe-an': Array(6).fill(null).map((_, i) => ({
-            id: `ghe-an-${i + 1}`,
-            name: 'Ghế ăn',
-            category: 'ghe-an',
-            image: '../pics/546844290_1363998112398532_5732524394673550953_n.jpg'
-        })),
-        'tu-bep': Array(10).fill(null).map((_, i) => ({
-            id: `tu-bep-${i + 1}`,
-            name: 'Tủ bếp',
-            category: 'tu-bep',
-            image: '../pics/tu-bep-tan-co-dien-go-cong-nghiep.webp'
-        }))
-    },
-    'phong-ngu': {
-        'giuong': Array(24).fill(null).map((_, i) => ({
-            id: `giuong-${i + 1}`,
-            name: 'Giường',
-            category: 'giuong',
-            image: '../pics/Mau-giuong-ngu-boc-da-ni-nem-phong-cach-hien-dai-y-chau-au-LG-GN431.jpg'
-        })),
-        'tap-dau-giuong': Array(6).fill(null).map((_, i) => ({
-            id: `tap-dau-giuong-${i + 1}`,
-            name: 'Tap đầu giường',
-            category: 'tap-dau-giuong',
-            image: '../pics/z7391448281830_e6832d7e53f9abc97a0af865f7598251.jpg'
-        })),
-        'don-cuoi-giuong': Array(4).fill(null).map((_, i) => ({
-            id: `don-cuoi-giuong-${i + 1}`,
-            name: 'Đôn cuối giường',
-            category: 'don-cuoi-giuong',
-            image: '../pics/z7391448285688_985ca93ef2a84a736beec965248cd19e.jpg'
-        })),
-        'ban-trang-diem': Array(5).fill(null).map((_, i) => ({
-            id: `ban-trang-diem-${i + 1}`,
-            name: 'Bàn trang điểm',
-            category: 'ban-trang-diem',
-            image: '../pics/z7391448291656_d9972fed0d006c324130ba4b4267015d.jpg'
-        })),
-        'don-ngoi-trang-diem': Array(3).fill(null).map((_, i) => ({
-            id: `don-ngoi-trang-diem-${i + 1}`,
-            name: 'Đôn ngồi trang điểm',
-            category: 'don-ngoi-trang-diem',
-            image: '../pics/z7391461828421_23f31e36fe0c0979415f1a2df27471c9.jpg'
-        })),
-        'tu-quan-ao': Array(8).fill(null).map((_, i) => ({
-            id: `tu-quan-ao-${i + 1}`,
-            name: 'Tủ quần áo',
-            category: 'tu-quan-ao',
-            image: '../pics/tu qao.png'
-        }))
-    }
+// Ảnh sản phẩm: thư mục pics/products/ (đường dẫn tương đối từ html/product.html)
+const PRODUCT_IMAGE_BASE = '../pics/products/';
+
+const SUBCATEGORY_LABELS = {
+    sofa: 'Sofa',
+    arm: 'Arm',
+    'ban-tra': 'Bàn trà',
+    'ke-tv': 'Kệ TV',
+    'tu-giay': 'Tủ giày',
+    'ban-an': 'Bàn ăn',
+    'ghe-an': 'Ghế ăn',
+    'tu-bep': 'Tủ bếp',
+    giuong: 'Giường',
+    'tap-dau-giuong': 'Tap đầu giường',
+    'don-cuoi-giuong': 'Đôn cuối giường',
+    'ban-trang-diem': 'Bàn trang điểm',
+    'don-ngoi-trang-diem': 'Đôn ngồi trang điểm',
+    'tu-quan-ao': 'Tủ quần áo'
 };
+
+/** Đường dẫn con trong pics/products/ (theo từng danh mục phụ) */
+const PRODUCT_IMAGES_BY_SUBCATEGORY = {
+    sofa: [
+        'living/Sofa/1.jpg',
+        'living/Sofa/2.jpg',
+        'living/Sofa/3.jpg',
+        'living/Sofa/4.JPG',
+        'living/Sofa/5.JPG',
+        'living/Sofa/6.JPG',
+        'living/Sofa/7.JPG',
+        'living/Sofa/8.JPG',
+        'living/Sofa/9.JPG',
+        'living/Sofa/10.JPG',
+        'living/Sofa/11.JPG',
+        'living/Sofa/12.JPG',
+        'living/Sofa/13.JPG',
+        'living/Sofa/14.JPG',
+        'living/Sofa/15.JPG',
+        'living/Sofa/16.JPG',
+        'living/Sofa/17.JPG',
+        'living/Sofa/18.JPG',
+        'living/Sofa/19.JPG',
+        'living/Sofa/20.JPG',
+        'living/Sofa/21.JPG',
+        'living/Sofa/22.JPG',
+        'living/Sofa/23.JPG',
+        'living/Sofa/24.JPG',
+        'living/Sofa/25.JPG',
+        'living/Sofa/26.webp',
+        'living/Sofa/27.jpg',
+        'living/Sofa/28.webp',
+        'living/Sofa/29.jpg'
+    ],
+    arm: [
+        'living/Arm/1.JPG',
+        'living/Arm/2.JPG',
+        'living/Arm/3.JPG',
+        'living/Arm/4.JPG',
+        'living/Arm/5.jpg'
+    ],
+    'ban-tra': [
+        'living/table_coffee/1.jpg',
+        'living/table_coffee/2.jpg',
+        'living/table_coffee/3.jpg',
+        'living/table_coffee/4.jpg',
+        'living/table_coffee/5.JPG',
+        'living/table_coffee/6.JPG',
+        'living/table_coffee/7.JPG',
+        'living/table_coffee/8.JPG',
+        'living/table_coffee/9.JPG',
+        'living/table_coffee/10.JPG',
+        'living/table_coffee/11.JPG',
+        'living/table_coffee/12.JPG',
+        'living/table_coffee/13.JPG',
+        'living/table_coffee/14.JPG',
+        'living/table_coffee/15.JPG',
+        'living/table_coffee/16.JPG',
+        'living/table_coffee/17.JPG',
+        'living/table_coffee/18.JPG',
+        'living/table_coffee/19.JPG',
+        'living/table_coffee/20.JPG',
+        'living/table_coffee/21.JPG',
+        'living/table_coffee/22.JPG',
+        'living/table_coffee/23.JPG',
+        'living/table_coffee/24.JPG',
+        'living/table_coffee/25.JPG',
+        'living/table_coffee/26.jpg',
+        'living/table_coffee/27.jpg'
+    ],
+    'ke-tv': [
+        'living/TV_stand/1.JPG',
+        'living/TV_stand/2.JPG',
+        'living/TV_stand/3.JPG',
+        'living/TV_stand/4.JPG',
+        'living/TV_stand/5.JPG',
+        'living/TV_stand/6.JPG',
+        'living/TV_stand/7.JPG',
+        'living/TV_stand/8.JPG',
+        'living/TV_stand/9.JPG'
+    ],
+    'tu-giay': [
+        'living/shoe_cabinet/1.jpg',
+        'living/shoe_cabinet/2.jpeg',
+        'living/shoe_cabinet/3.jpg',
+        'living/shoe_cabinet/4.jpeg',
+        'living/shoe_cabinet/5.jpg',
+        'living/shoe_cabinet/6.jpg',
+        'living/shoe_cabinet/7.jpg',
+        'living/shoe_cabinet/8.jpg'
+    ],
+    'ban-an': [
+        'kitchen/kitchen_table/1.jpg',
+        'kitchen/kitchen_table/2.jpg',
+        'kitchen/kitchen_table/3.jpg',
+        'kitchen/kitchen_table/4.JPG',
+        'kitchen/kitchen_table/5.JPG',
+        'kitchen/kitchen_table/6.JPG',
+        'kitchen/kitchen_table/7.JPG',
+        'kitchen/kitchen_table/8.JPG',
+        'kitchen/kitchen_table/9.JPG',
+        'kitchen/kitchen_table/10.JPG',
+        'kitchen/kitchen_table/11.JPG',
+        'kitchen/kitchen_table/12.JPG',
+        'kitchen/kitchen_table/13.JPG',
+        'kitchen/kitchen_table/14.JPG',
+        'kitchen/kitchen_table/15.JPG',
+        'kitchen/kitchen_table/16.JPG',
+        'kitchen/kitchen_table/17.JPG',
+        'kitchen/kitchen_table/18.JPG',
+        'kitchen/kitchen_table/19.JPG',
+        'kitchen/kitchen_table/20.JPG',
+        'kitchen/kitchen_table/21.JPG',
+        'kitchen/kitchen_table/22.JPG'
+    ],
+    'ghe-an': [],
+    'tu-bep': [
+        'kitchen/kitchen_cabinet/1.JPG',
+        'kitchen/kitchen_cabinet/2.JPG',
+        'kitchen/kitchen_cabinet/3.JPG',
+        'kitchen/kitchen_cabinet/4.JPG',
+        'kitchen/kitchen_cabinet/5.JPG',
+        'kitchen/kitchen_cabinet/6.JPG',
+        'kitchen/kitchen_cabinet/7.JPG',
+        'kitchen/kitchen_cabinet/8.JPG',
+        'kitchen/kitchen_cabinet/9.JPG',
+        'kitchen/kitchen_cabinet/10.JPG',
+        'kitchen/kitchen_cabinet/11.JPG',
+        'kitchen/kitchen_cabinet/12.JPG'
+    ],
+    giuong: [
+        'bedroom/Bed/1.jpg',
+        'bedroom/Bed/2.jpg',
+        'bedroom/Bed/3.jpg',
+        'bedroom/Bed/4.jpg',
+        'bedroom/Bed/5.jpg',
+        'bedroom/Bed/6.jpg',
+        'bedroom/Bed/7.JPG',
+        'bedroom/Bed/8.JPG',
+        'bedroom/Bed/9.JPG',
+        'bedroom/Bed/10.JPG',
+        'bedroom/Bed/11.JPG',
+        'bedroom/Bed/12.JPG',
+        'bedroom/Bed/13.JPG',
+        'bedroom/Bed/14.JPG',
+        'bedroom/Bed/15.JPG',
+        'bedroom/Bed/16.JPG',
+        'bedroom/Bed/17.JPG',
+        'bedroom/Bed/18.JPG',
+        'bedroom/Bed/19.JPG'
+    ],
+    'tap-dau-giuong': [
+        'bedroom/Bed_tab/1.jpg',
+        'bedroom/Bed_tab/2.jpg',
+        'bedroom/Bed_tab/3.jpg',
+        'bedroom/Bed_tab/4.jpg',
+        'bedroom/Bed_tab/5.jpg'
+    ],
+    'don-cuoi-giuong': [
+        'bedroom/Don_bed/1.jpg',
+        'bedroom/Don_bed/2.jpg'
+    ],
+    'ban-trang-diem': [
+        'bedroom/makeup_Table/1(1).jpg',
+        'bedroom/makeup_Table/1.JPG',
+        'bedroom/makeup_Table/3.jpg',
+        'bedroom/makeup_Table/4.JPG',
+        'bedroom/makeup_Table/5.JPG',
+        'bedroom/makeup_Table/6.JPG',
+        'bedroom/makeup_Table/7.JPG',
+        'bedroom/makeup_Table/8.JPG'
+    ],
+    'don-ngoi-trang-diem': [
+        'bedroom/Don_makeup/1.jpg'
+    ],
+    'tu-quan-ao': [
+        'bedroom/wadrobe/1.jpg',
+        'bedroom/wadrobe/2.jpg',
+        'bedroom/wadrobe/3.jpg',
+        'bedroom/wadrobe/4.jpg',
+        'bedroom/wadrobe/5.jpg',
+        'bedroom/wadrobe/6.jpg',
+        'bedroom/wadrobe/7.jpg',
+        'bedroom/wadrobe/8.jpg',
+        'bedroom/wadrobe/9.jpg',
+        'bedroom/wadrobe/10.jpg',
+        'bedroom/wadrobe/11.JPG'
+    ]
+};
+
+function mapSubcategoryToProducts(subKey) {
+    const relPaths = PRODUCT_IMAGES_BY_SUBCATEGORY[subKey] || [];
+    const label = SUBCATEGORY_LABELS[subKey];
+    return relPaths.map((relPath, i) => ({
+        id: `${subKey}-${i + 1}`,
+        name: label,
+        category: subKey,
+        image: PRODUCT_IMAGE_BASE + relPath
+    }));
+}
+
+function buildProductsFromImages() {
+    const keysPhongKhach = ['sofa', 'arm', 'ban-tra', 'ke-tv', 'tu-giay'];
+    const keysPhongAn = ['ban-an', 'ghe-an', 'tu-bep'];
+    const keysPhongNgu = ['giuong', 'tap-dau-giuong', 'don-cuoi-giuong', 'ban-trang-diem', 'don-ngoi-trang-diem', 'tu-quan-ao'];
+    const pick = (keys) => {
+        const o = {};
+        keys.forEach((k) => {
+            o[k] = mapSubcategoryToProducts(k);
+        });
+        return o;
+    };
+    return {
+        'phong-khach': pick(keysPhongKhach),
+        'phong-an': pick(keysPhongAn),
+        'phong-ngu': pick(keysPhongNgu)
+    };
+}
+
+const products = buildProductsFromImages();
 var isFiltering = false;
 function setupKeywordSearch() {
     const searchInput = keyword || document.getElementById('search-input');
@@ -275,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Render initial products (Giường - 24 products) only if not searching by keyword
+        // Render initial products theo danh mục đang chọn (mặc định: Giường)
         if (!keywordParam) {
             filterProducts();
         }
