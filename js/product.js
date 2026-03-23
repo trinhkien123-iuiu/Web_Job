@@ -245,7 +245,7 @@ function setupKeywordSearch() {
         console.warn('Search input not found');
         return;
     }
-    else console.log('Search input found ' + searchInput.value.length);
+    else console.log('Search input found ' );
     
     searchInput.addEventListener('keydown', function(event) {
         if (event.key === "Enter") {
@@ -261,6 +261,7 @@ function setupKeywordSearch() {
                 renderProducts(getProductsByKeyword(keywordValue));
             } else {
                 // If empty, show all products from current category and remove keyword from URL
+                console.log('Empty keyword, showing all products');
                 isFiltering = false;
                 const newUrl = new URL(window.location);
                 newUrl.searchParams.delete('keyword');
@@ -385,7 +386,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check for keyword in URL parameter
     const urlParams = new URLSearchParams(window.location.search);
-    const keywordParam = urlParams.get('keyword');
+    // product.js expects `keyword`, but keep fallback for older links using `search`
+    const keywordParam = urlParams.get('keyword') || urlParams.get('search');
     
     const setupSearchWithRetry = () => {
         const searchInput = document.getElementById('search-input');
@@ -431,4 +433,3 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     setupSearchWithRetry();
 });
-
