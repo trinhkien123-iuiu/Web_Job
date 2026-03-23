@@ -114,6 +114,11 @@
     transition: transform 0.3s;
 }
 
+.social-buttons>a:nth-child(3)>img{
+    width: 40px !important; 
+    height: 40px !important;
+}
+
 @keyframes shake-zoom {
   0%   { transform: scale(1) rotate(0deg); }
   15%  { transform: scale(1.1) rotate(-6deg); }
