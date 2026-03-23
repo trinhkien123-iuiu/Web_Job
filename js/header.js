@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const keywordValue = this.value.trim();
             if (keywordValue.length > 0) {
               isTyping = true;
-              window.location.href = `/html/product.html?search=${encodeURIComponent(keywordValue)}`;
+             // window.location.href = `/html/product.html?search=${encodeURIComponent(keywordValue)}`;
             }
         }
       

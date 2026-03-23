@@ -245,6 +245,7 @@ function setupKeywordSearch() {
         console.warn('Search input not found');
         return;
     }
+    else console.log('Search input found ' + searchInput.value.length);
     
     searchInput.addEventListener('keydown', function(event) {
         if (event.key === "Enter") {
@@ -388,6 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const setupSearchWithRetry = () => {
         const searchInput = document.getElementById('search-input');
+       
         if (searchInput) {
             setupKeywordSearch();
             
@@ -401,6 +403,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } else {
             // Retry after a short delay if header hasn't loaded yet
+            console.warn('Search input not found, retrying...');
             setTimeout(setupSearchWithRetry, 100);
             return;
         }
