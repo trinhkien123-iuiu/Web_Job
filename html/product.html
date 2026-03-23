@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>An Bảo Home - Sản phẩm</title>
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="icon" href="../pics/logo_kh_nen_mini.png" type="image/x-icon" />
     <link rel="stylesheet" href="../css/product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/scroll-animation.css">
+    <link rel="stylesheet" href="../css/header.css">
+    
 </head>
 
 <body>
@@ -18,7 +21,7 @@
 
     <div class="breadcrumb">
         <!-- <p>Trang chủ / <span style="color: var(--main-text-click)">Sản phẩm</span> </p> -->
-        <span><a href="trangchu.html">Trang chủ</a><p style="padding: 0 4px; font-size: 14px; color: #423625">/</p><a href="" style="color: var(--main-text-click);">Sản phẩm</a></span>
+        <span><a href="index.html">Trang chủ</a><p style="padding: 0 4px; font-size: 14px; color: #423625">/</p><a href="" style="color: var(--main-text-click);">Sản phẩm</a></span>
 
     </div>
     
@@ -115,8 +118,8 @@
         </div>
 
         <!-- Main content area -->
-        <div class="result-area">
-            <p class="result-count">Hiển thị <span id="result-count">24</span> kết quả</p>
+        <div class="result-area scroll-animate">
+            <p class="result-count">Hiển thị <span id="result-count">0</span> kết quả</p>
             <div class="product-list" id="product-list">
                 <!-- Products will be dynamically generated -->
             </div>
@@ -125,6 +128,7 @@
 
      <div id="site-footer" data-include="../html/footer.html"></div>
     <script src="../js/footer.js"></script>
+    <script src="../js/scroll-animation.js"></script>
     <script src="../js/product.js"></script>
 </body>
 
