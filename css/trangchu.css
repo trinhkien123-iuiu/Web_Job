@@ -215,8 +215,8 @@
   /* Banner đầu trang */
   .abhome{
     font-size: clamp(24px, 7vw, 30px);
+    padding-top: 50px;
   }
-
   .luxury{
     font-size: clamp(12px, 3vw, 16px);
     letter-spacing: 0.16em;

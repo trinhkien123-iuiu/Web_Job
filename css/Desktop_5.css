@@ -280,6 +280,9 @@ html, body{
     font-size: 12px;
     flex-wrap: wrap;
   }
+  #contact_site{
+    padding-top: 16%;
+  }
 
   #contact{
     margin-top: 0 !important;
